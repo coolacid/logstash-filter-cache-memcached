@@ -82,8 +82,9 @@ filter {
     retreive => true
   }
   if "cache_miss" in [tags] {
-    # Since message1 was nil, it's not in the cache.
+    # Since cache_miss was in the tags, it's not in the cache.
     # Normally, we'd add our filter here to populate the field, but this is an example :)
+    # Besides, we want the nil to show on the first run, and not show the second time
     memcached {
       namespace => 'test'
       host => "localhost:11211"
